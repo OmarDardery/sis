@@ -122,7 +122,7 @@ func (a *AttendanceManager) MarkStudentAttendance(ctx *gin.Context, db *gorm.DB)
 	}
 
 	// === Validate secret key ===
-	secret := os.Getenv("FRONTEND_SECRET")
+	secret := os.Getenv("FRONTEND_SECRET_KEY")
 	if secret == "" {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": "server misconfiguration"})
 		return
