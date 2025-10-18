@@ -84,6 +84,8 @@ func HandleSignin(ctx *gin.Context, db *gorm.DB, role string) {
 		})
 	}
 
+	// ✅ generate JWT
+
 	tokenStr, _ := token.SignedString([]byte(os.Getenv("JWT_SECRET")))
 	ctx.JSON(200, gin.H{"token": tokenStr})
 }

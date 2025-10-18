@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 	"sync"
 
 	"github.com/OmarDardery/sis/models"
@@ -133,11 +134,14 @@ func (a *AttendanceManager) MarkStudentAttendance(ctx *gin.Context, db *gorm.DB)
 	}
 
 	// === Get JWT from Authorization header ===
-	tokenString := ctx.GetHeader("Authorization")
-	if tokenString == "" {
+	authHeader := ctx.GetHeader("Authorization")
+	if authHeader == "" {
 		ctx.JSON(http.StatusUnauthorized, gin.H{"error": "missing token"})
 		return
 	}
+
+	tokenString := strings.TrimPrefix(authHeader, "Bearer ")
+	tokenString = strings.TrimSpace(tokenString)
 
 	// === Validate JWT ===
 	claims := jwt.MapClaims{}
@@ -149,7 +153,7 @@ func (a *AttendanceManager) MarkStudentAttendance(ctx *gin.Context, db *gorm.DB)
 		return
 	}
 
-	studentIDFloat, ok := claims["student_id"].(float64)
+	studentIDFloat, ok := claims["id"].(float64)
 	if !ok {
 		ctx.JSON(http.StatusUnauthorized, gin.H{"error": "invalid token claims"})
 		return
