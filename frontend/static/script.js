@@ -46,7 +46,7 @@ async function signUp(role) {
 // ====================== TEACHER QR CREATION ======================
 async function openAttendance(slotId) {
   const token = localStorage.getItem("jwt");
-  const socket = new WebSocket(`ws://${window.location.host}/ws/attendance`);
+  const socket = new WebSocket(`wss://${window.location.host}/ws/attendance`);
 
   socket.onopen = () => {
     socket.send(JSON.stringify({ teacher_token: token, slot_id: slotId })); // teacher_id extracted from JWT ideally
