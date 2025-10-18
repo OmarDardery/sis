@@ -1,9 +1,9 @@
 ### Create a Slot
-POST http://localhost:8000/slots
+POST https://sis-u71r.onrender.com/slots
 Content-Type: application/json
 
 {
-  "teacher_id": 3,
+  "teacher_id": 1,
   "subject_id": 1,
   "semester_id": 1,
   "date": "2025-10-25",

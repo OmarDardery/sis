@@ -1,6 +1,6 @@
 
 ### Create a Subject
-POST http://localhost:8000/subjects
+POST https://sis-u71r.onrender.com/subjects
 Content-Type: application/json
 
 {

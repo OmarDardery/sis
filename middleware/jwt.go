@@ -3,6 +3,7 @@ package middleware
 import (
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
@@ -12,13 +13,21 @@ var jwtSecret = []byte(os.Getenv("JWT_SECRET"))
 
 func StudentAuthMiddleware() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		tokenString := ctx.GetHeader("Authorization")
-
-		if tokenString == "" {
+		authHeader := ctx.GetHeader("Authorization")
+		if authHeader == "" {
 			ctx.JSON(http.StatusUnauthorized, gin.H{"error": "Missing token"})
 			ctx.Abort()
 			return
 		}
+
+		parts := strings.Split(authHeader, " ")
+		if len(parts) != 2 || parts[0] != "Bearer" {
+			ctx.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid token format"})
+			ctx.Abort()
+			return
+		}
+
+		tokenString := parts[1]
 
 		token, err := jwt.Parse(tokenString, func(t *jwt.Token) (interface{}, error) {
 			return jwtSecret, nil

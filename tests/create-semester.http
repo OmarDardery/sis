@@ -1,7 +1,7 @@
 
 
 ### Create a Semester
-POST http://localhost:8000/semesters
+POST https://sis-u71r.onrender.com/semesters
 Content-Type: application/json
 
 {
