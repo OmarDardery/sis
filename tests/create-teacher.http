@@ -1,0 +1,8 @@
+### Signup a Teacher
+POST http://localhost:8000/signup/teacher
+Content-Type: application/json
+
+{
+  "email": "teacher1@example.com",
+  "password": "securepassword123"
+}

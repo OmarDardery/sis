@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Home</title>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
+</head>
+<body>
+  <h1>Scan QR to Mark Attendance</h1>
+  <div id="reader"></div>
+  <button onclick="startQRReader()">Start Scanner</button>
+  <script>
+  window.FRONTEND_SECRET = "{{.FRONTEND_SECRET_KEY}}";
+</script>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

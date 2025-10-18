@@ -1,0 +1,9 @@
+
+
+### Create a Semester
+POST http://localhost:8000/semesters
+Content-Type: application/json
+
+{
+  "title": "Fall 2025"
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Teacher Home</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+</head>
+<body>
+  <h1>Teacher Dashboard</h1>
+  <input id="slotId" type="number" placeholder="Enter Slot ID"><br>
+  <button onclick="openAttendance(parseInt(document.getElementById('slotId').value))">Open Attendance</button>
+  <div id="qr-container"></div>
+  <script>
+  window.FRONTEND_SECRET = "{{.FRONTEND_SECRET_KEY}}";
+</script>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

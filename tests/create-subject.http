@@ -1,0 +1,9 @@
+
+### Create a Subject
+POST http://localhost:8000/subjects
+Content-Type: application/json
+
+{
+  "name": "Mathematics",
+  "credit_hours": 3
+}

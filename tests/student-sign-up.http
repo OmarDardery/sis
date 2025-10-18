@@ -1,0 +1,7 @@
+POST http://127.0.0.1:8000/signup/student
+Content-Type: application/json
+
+{
+"email": "23-101265@students.eui.edu.eg",
+"password": "hehe1234"
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign In</title>
+</head>
+<body>
+  <h1>Sign In</h1>
+  <input id="email" type="email" placeholder="Email"><br>
+  <input id="password" type="password" placeholder="Password"><br>
+  <button onclick="signIn('student')">Student Sign In</button>
+  <button onclick="signIn('teacher')">Teacher Sign In</button>
+  <script>
+    window.FRONTEND_SECRET = "{{.FRONTEND_SECRET_KEY}}";
+  </script>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
