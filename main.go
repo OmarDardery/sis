@@ -104,7 +104,13 @@ func main() {
 	server.GET("/attendance/qr", func(ctx *gin.Context) {
 		attendanceManager.GenerateQRCode(ctx)
 	})
-
+	server.GET("/attendance", func(ctx *gin.Context) {
+		var as []models.Attendance
+		db.Preload("Slot").Preload("Slot.Teacher").Preload("Slot.Semester").Preload("Slot.Subject").Preload("Student").Find(&as)
+		ctx.JSON(200, gin.H{
+			"data": as,
+		})
+	})
 	// ================= START SERVER =================
 	port := os.Getenv("PORT")
 	if port == "" {
